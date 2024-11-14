@@ -1,6 +1,6 @@
 import React from 'react';
 import heroImage from '../assets/NewHero.jpg';  // Image for larger screens
-import heroImageMobile from '../assets/Black and White Phone Mockup Webinar Promotion Instagram Story (1).png'; // Image for mobile screens
+import heroImageMobile from '../assets/mobilview.png'; // Image for mobile screens
 
 const HeroPage = () => {
   return (
@@ -9,7 +9,7 @@ const HeroPage = () => {
       <img
         src={heroImageMobile}
         alt="Hero Mobile"
-        className="w-full h-full object-cover md:hidden" // Only show on mobile (sm)
+        className="w-full h-full object-cover md:hidden mt-16" // Only show on mobile (sm)
       />
 
       {/* Image for larger screens */}

@@ -66,12 +66,12 @@ const Footer = () => {
                             <div>
                                 <p className="font-medium text-lg text-gray-800">Contact</p>
                                 <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
-                                    <p className="text-gray-600">Call Us: <span className="font-semibold">+91 9689213168
-                                    </span></p>
-                                    <p className="text-gray-600">Email: <span className="font-semibold">info@medicalcoding.com</span></p>
-                                    <p className="text-gray-600">Address: <span className="font-semibold">Near lane no.-7 Pundlik nagar</span></p>
+                                    <p className="text-gray-600">Call Us: <span className="font-semibold">+91 9689213168</span></p>
+                                    <p className="text-gray-600">Email: <span className="whitespace-normal break-all">office@shivhealthcaresolutions.com</span></p>
+                                    <p className="text-gray-600">Address: <span className="font-semibold">Near lane no.-7 Pundlik Nagar Chh.Sambhajinagar</span></p>
                                 </nav>
                             </div>
+
                         </div>
                     </div>
 

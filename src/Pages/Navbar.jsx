@@ -33,10 +33,10 @@ export const Navbar = () => {
         </a>
       </div>
 
-      {/* Navbar */}
+      {/* Navbar for Desktop */}
       <nav
-        className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${isScrolled || isMenuOpen
-          ? 'bg-white shadow-md'
+        className={`hidden md:flex fixed w-full top-0 left-0 z-50 transition-all duration-300 ${isScrolled
+          ? 'bg-white shadow-md' // White background with shadow on scroll for desktop
           : 'bg-transparent'
           }`}
       >
@@ -46,35 +46,12 @@ export const Navbar = () => {
             <img
               src={logo}
               alt="Logo"
-              className={`h-12 w-12 transition-all duration-300 ${isScrolled ? 'h-10 w-10' : 'h-12 w-12'}`}
+              className={`h-20 w-20 transition-all duration-300 ${isScrolled ? 'h-10 w-10' : 'h-12 w-12'}`}
             />
           </Link>
 
-          {/* Hamburger Menu Button */}
-          <button
-            className="md:hidden flex items-center focus:outline-none"
-            type="button"
-            aria-label="Toggle navigation"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? (
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
-
           {/* Navigation Links */}
-          <div
-            className={`md:flex items-center space-x-4 text-xl ${isMenuOpen
-              ? 'flex flex-col items-center justify-center absolute bg-white top-16 left-0 right-0 shadow-md py-4 md:py-0'
-              : 'hidden md:flex'
-              } ${isMenuOpen ? 'bg-white' : 'bg-transparent md:bg-transparent'}`} // Apply bg-white when menu is open
-          >
+          <div className="flex items-center space-x-2 text-xl">
             {['home', 'about', 'services', 'career', 'contact'].map((link) => (
               <Link
                 key={link}
@@ -98,6 +75,56 @@ export const Navbar = () => {
             ))}
           </div>
         </div>
+      </nav>
+
+      {/* Navbar for Mobile */}
+      <nav
+        className={`md:hidden fixed w-full top-0 left-0 z-50 bg-white shadow-md`}
+      >
+        <div className="container mx-auto flex items-center justify-between py-3 px-6">
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-2">
+            <img
+              src={logo}
+              alt="Logo"
+              className={`h-20 w-20 transition-all duration-300`}
+            />
+          </Link>
+
+          {/* Hamburger Menu Button */}
+          <button
+            className="flex items-center focus:outline-none"
+            type="button"
+            aria-label="Toggle navigation"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? (
+              <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Menu (Left aligned) */}
+        {isMenuOpen && (
+          <div className="flex flex-col items-start bg-white py-4 px-6">
+            {['home', 'about', 'services', 'career', 'contact'].map((link) => (
+              <Link
+                key={link}
+                to={`/${link === 'home' ? '' : link}`}
+                onClick={() => handleLinkClick(link)}
+                className={`font-bold py-2 text-xl text-gray-700 hover:text-blue-600 transition-all duration-300`}
+              >
+                {link.charAt(0).toUpperCase() + link.slice(1)}
+              </Link>
+            ))}
+          </div>
+        )}
       </nav>
     </>
   );
